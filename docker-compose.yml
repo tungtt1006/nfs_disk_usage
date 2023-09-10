@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    tty: true
+    stdin_open: true
+    build:
+      context: "."
+      dockerfile: ./docker/Dockerfile
+    volumes:
+    - ./metrics.txt:/usr/share/nginx/metrics/metrics.txt
+    - ./test:/root/test
+    environment:
+      DIRECTORY: /root/test
+    ports:
+    - "80:80"
