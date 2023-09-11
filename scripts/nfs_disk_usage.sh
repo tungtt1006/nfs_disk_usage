@@ -15,6 +15,7 @@ array=($(ls -d $path/*/))
 metricFilepPath="$METRICS_FILE_PATH/metrics.txt"
 mkdir -p $METRICS_FILE_PATH
 echo "# HELP nfs_disk_usage_bytes The number of bytes usage" > $metricFilepPath
+echo "# TYPE nfs_disk_usage_bytes gauge" >> $metricFilepPath
 
 for i in ${array[@]}
 do
