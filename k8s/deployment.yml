@@ -25,4 +25,5 @@ spec:
         resources: {}
       volumes:
         - name: nfs-directory
-          emptyDir: {}
+          hostPath:
+            path: <nfs-mount-path-on-node>
