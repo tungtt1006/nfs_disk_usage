@@ -8,9 +8,10 @@ services:
       context: "."
       dockerfile: ./docker/Dockerfile
     volumes:
-    - ./metrics.txt:/usr/share/nginx/metrics/metrics.txt
-    - ./test:/root/test
+    # - ./metrics.txt:/usr/share/nginx/metrics/metrics.txt
+    - ./test:/root/nfs-storage
     environment:
-      DIRECTORY: /root/test
+      DIRECTORY: /root/nfs-storage
+      METRICS_FILE_PATH: /usr/share/nginx/metrics
     ports:
     - "80:80"

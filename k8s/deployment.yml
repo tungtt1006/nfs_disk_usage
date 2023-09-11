@@ -18,10 +18,11 @@ spec:
         image: tungtt1006/nfs-disk-usage
         env:
           - name: DIRECTORY
-            value: /root/test
+            value: /root/nfs-storage
         volumeMounts:
           - name: nfs-directory
-            mountPath: /root/test
+            mountPath: /root/nfs-storage
+        resources: {}
       volumes:
         - name: nfs-directory
           emptyDir: {}
