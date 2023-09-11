@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nfs-disk-usage
+  labels:
+    app.kubernetes.io/name: nfs-disk-usage
+    app.kubernetes.io/instance: nfs-disk-usage
+spec:
+  selector:
+    app.kubernetes.io/name: nfs-disk-usage
+    app.kubernetes.io/instance: nfs-disk-usage
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80

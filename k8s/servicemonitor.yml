@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: nfs-disk-usage
+spec:
+  endpoints:
+  - intervals: 70s
+    path: /metrics.txt
+    port: http
+  selector:
+    matchExpressions:
+      - key: prometheus.io/service-monitor
+        operator: NotIn
+        values:
+          - 'false'
+    matchLabels:
+      app.kubernetes.io/name: nfs-disk-usage
+      app.kubernetes.io/instance: nfs-disk-usage

@@ -3,14 +3,16 @@ kind: Deployment
 metadata:
   name: nfs-disk-usage
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: nfs-disk-usage
-  replicas: 1
+      app.kubernetes.io/instance: nfs-disk-usage
   template:
     metadata:
       labels:
         app.kubernetes.io/name: nfs-disk-usage
+        app.kubernetes.io/instance: nfs-disk-usage
     spec:
       nodeName: worker1
       containers:
