@@ -18,12 +18,34 @@ spec:
       containers:
       - name: app
         image: tungtt1006/nfs-disk-usage
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
         env:
           - name: DIRECTORY
             value: /root/nfs-storage
+          - name: METRICS_FILE_PATH
+            value: /usr/share/nginx/metrics
         volumeMounts:
           - name: nfs-directory
             mountPath: /root/nfs-storage
+        readinessProbe:
+          exec:
+            command:
+            - ls
+            - -d
+            - $path/*/
+          initialDelaySeconds: 20
+          periodSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - ls
+            - -d
+            - $path/*/
+          initialDelaySeconds: 20
+          periodSeconds: 5
         resources: {}
       volumes:
         - name: nfs-directory
