@@ -33,17 +33,17 @@ spec:
         readinessProbe:
           exec:
             command:
-            - ls
-            - -d
-            - $path/*/
+            - /bin/bash
+            - -c
+            - ls -d $DIRECTORY/*/
           initialDelaySeconds: 20
           periodSeconds: 5
         livenessProbe:
           exec:
             command:
-            - ls
-            - -d
-            - $path/*/
+            - /bin/bash
+            - -c
+            - ls -d $DIRECTORY/*/
           initialDelaySeconds: 20
           periodSeconds: 5
         resources: {}
