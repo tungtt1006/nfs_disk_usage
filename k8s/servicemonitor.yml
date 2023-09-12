@@ -7,6 +7,21 @@ spec:
   - interval: 70s
     path: /metrics.txt
     port: http
+    metricRelabelings:
+      - sourceLabels:
+        - volume
+        action: replace
+        regex: '/root/nfs-storage/(.*)-(pvc-.*)/'
+        replacement: '$1'
+        targetLabel: persistentvolumeclaim
+      - sourceLabels:
+        - volume
+        action: replace
+        regex: '/root/nfs-storage/(.*)-(pvc-.*)/'
+        replacement: '$2'
+        targetLabel: persistentvolume
+      - regex: 'volume'
+        action: labeldrop
   selector:
     matchExpressions:
       - key: prometheus.io/service-monitor

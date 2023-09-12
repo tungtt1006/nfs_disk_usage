@@ -27,6 +27,8 @@ spec:
             value: /root/nfs-storage
           - name: METRICS_FILE_PATH
             value: /usr/share/nginx/metrics
+          - name: NGINX_SERVER_NAME
+            value: nfs-disk-usage.cluster.local
         volumeMounts:
           - name: nfs-directory
             mountPath: /root/nfs-storage
