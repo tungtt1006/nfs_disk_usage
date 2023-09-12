@@ -13,5 +13,6 @@ services:
     environment:
       DIRECTORY: /root/nfs-storage
       METRICS_FILE_PATH: /usr/share/nginx/metrics
+      NGINX_SERVER_NAME: nfs-disk-usage.cluster.local
     ports:
     - "80:80"

@@ -4,7 +4,7 @@ metadata:
   name: nfs-disk-usage
 spec:
   endpoints:
-  - intervals: 70s
+  - interval: 70s
     path: /metrics.txt
     port: http
   selector:
