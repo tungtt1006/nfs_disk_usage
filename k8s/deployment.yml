@@ -14,7 +14,7 @@ spec:
         app.kubernetes.io/name: nfs-disk-usage
         app.kubernetes.io/instance: nfs-disk-usage
     spec:
-      nodeName: worker1
+      nodeName: <node-you-running-mount-command>
       containers:
       - name: app
         image: tungtt1006/nfs-disk-usage
