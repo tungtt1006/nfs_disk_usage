@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app.kubernetes.io/name: nfs-disk-usage
+    app.kubernetes.io/instance: nfs-disk-usage
+  name: nfs-disk-usage
+spec:
+  groups:
+    - name: nfs-disk-usage-alerts
+      rules:
+        - alert: HighDiskUsage
+          annotations:
+            description: >-
+              Persistent Volume {{ $labels.persistentvolume }} used {{ $value }}% requested disk storage.
+          expr: >-
+            ceil((sum(nfs_disk_usage_bytes) by (persistentvolume) * 100) / sum(kube_persistentvolume_capacity_bytes) by (persistentvolume)) > 80
+          for: 10m
+          labels:
+            severity: warning

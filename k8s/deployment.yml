@@ -14,7 +14,7 @@ spec:
         app.kubernetes.io/name: nfs-disk-usage
         app.kubernetes.io/instance: nfs-disk-usage
     spec:
-      nodeName: <node-you-running-mount-command>
+      nodeName: <node-you-run-mount-command>
       containers:
       - name: app
         image: tungtt1006/nfs-disk-usage
@@ -52,4 +52,4 @@ spec:
       volumes:
         - name: nfs-directory
           hostPath:
-            path: <nfs-mount-path-on-node>
+            path: <nfs-mount-path-on-your-node>
