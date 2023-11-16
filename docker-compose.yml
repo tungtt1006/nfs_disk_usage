@@ -1,18 +1,24 @@
 version: '3.8'
 
 services:
-  app:
-    tty: true
-    stdin_open: true
-    build:
-      context: "."
-      dockerfile: ./docker/Dockerfile
-    volumes:
-    # - ./metrics.txt:/usr/share/nginx/metrics/metrics.txt
-    - ./test:/root/nfs-storage
-    environment:
-      DIRECTORY: /root/nfs-storage
-      METRICS_FILE_PATH: /usr/share/nginx/metrics
-      NGINX_SERVER_NAME: nfs-disk-usage.cluster.local
+  pushgateway:
+    image: prom/pushgateway
     ports:
-    - "80:80"
+    - "9091:9091"
+  # app:
+  #   tty: true
+  #   stdin_open: true
+  #   build:
+  #     context: "."
+  #     dockerfile: ./docker/Dockerfile
+  #   volumes:
+  #   # - ./metrics.txt:/usr/share/nginx/metrics/metrics.txt
+  #   - ./test:/root/nfs-storage
+  #   environment:
+  #     DIRECTORY: /root/nfs-storage
+  #     METRICS_FILE_PATH: /usr/share/nginx/metrics
+  #     NGINX_SERVER_NAME: nfs-disk-usage.cluster.local
+  #   ports:
+  #   - "80:80"
+
+  curl -d @test.txt https://localhost:9091/

@@ -1,0 +1,2 @@
+# HELP nfs_disk_usage_bytes The number of bytes usage
+# TYPE nfs_disk_usage_bytes gauge
